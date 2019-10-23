@@ -1,3 +1,4 @@
+FROM dougshidong/dealii:latest
 RUN echo $USER;
 RUN echo $HOME; 
 RUN echo $LIBRARIES; 
@@ -27,4 +28,4 @@ RUN cd $LIBRARIES/dealii; ls; mkdir build; cd build; \
 
 RUN cd $LIBRARIES/dealii/build; make -j3; make -j3 install;
 
-RUN cd $LIBRARIES; git clone https://github.com/dougshidong/PHiLiP; cd PHiLiP; mkdir build_release; cd build_release; cmake ../ -DDEAL_II_DIR=$LIBRARIES/dealii/install; make -j2;
+RUN cd $LIBRARIES; git clone https://github.com/dougshidong/PHiLiP; cd PHiLiP; mkdir build_release; cd build_release; cmake ../ -DDEAL_II_DIR=$LIBRARIES/dealii/install; make;
